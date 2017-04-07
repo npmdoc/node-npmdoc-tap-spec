@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"tap-spec",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "tap-spec",
+    "description": "api documentation for [tap-spec (v4.1.1)](https://github.com/scottcorgan/tap-spec#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-tap-spec.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-tap-spec) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-tap-spec.svg)](https://travis-ci.org/npmdoc/node-npmdoc-tap-spec)",
     "devDependencies": {
-        "tap-spec": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "tap-spec": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-tap-spec",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-tap-spec",
+    "keywords": [
+        "documentation",
+        "tap-spec"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_tap_spec.js",
+    "name": "npmdoc-tap-spec",
+    "nameAlias": "npmdoc_tap_spec",
+    "nameOriginal": "npmdoc-tap-spec",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-tap-spec"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
