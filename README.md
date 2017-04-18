@@ -1,9 +1,14 @@
-# api documentation for  [tap-spec (v4.1.1)](https://github.com/scottcorgan/tap-spec#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-tap-spec.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-tap-spec) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-tap-spec.svg)](https://travis-ci.org/npmdoc/node-npmdoc-tap-spec)
+# npmdoc-tap-spec
+
+#### api documentation for  [tap-spec (v4.1.1)](https://github.com/scottcorgan/tap-spec#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-tap-spec.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-tap-spec) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-tap-spec.svg)](https://travis-ci.org/npmdoc/node-npmdoc-tap-spec)
+
 #### Formatted TAP output like Mocha's spec reporter
 
-[![NPM](https://nodei.co/npm/tap-spec.png?downloads=true)](https://www.npmjs.com/package/tap-spec)
+[![NPM](https://nodei.co/npm/tap-spec.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/tap-spec)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-tap-spec/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-tap-spec_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-tap-spec/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-tap-spec/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-tap-spec/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-tap-spec/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-tap-spec/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-tap-spec/build/screenCapture.npmPackageListing.svg)
 
@@ -58,13 +63,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "scottcorgan",
-            "email": "scottcorgan@gmail.com"
+            "name": "scottcorgan"
         }
     ],
     "name": "tap-spec",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/scottcorgan/tap-spec.git"
@@ -75,16 +78,6 @@
     "version": "4.1.1"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module tap-spec](#apidoc.module.tap-spec)
-
-
-
-# <a name="apidoc.module.tap-spec"></a>[module tap-spec](#apidoc.module.tap-spec)
 
 
 
