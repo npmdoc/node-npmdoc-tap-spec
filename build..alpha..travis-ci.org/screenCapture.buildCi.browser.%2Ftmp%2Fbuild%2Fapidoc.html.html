@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/scottcorgan/tap-spec#readme"
-
-    >tap-spec (v4.1.1)</a>
+    <a href="https://github.com/scottcorgan/tap-spec#readme">tap-spec (v4.1.1)</a>
 </h1>
 <h4>Formatted TAP output like Mocha's spec reporter</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.tap-spec">module tap-spec</a><ol>
 
@@ -89,69 +82,69 @@
 
   spec = spec || {};
 
-  var OUTPUT_PADDING = spec.padding || &#x27;  &#x27;;
+  var OUTPUT_PADDING = spec.padding || '  ';
 
   var output = through();
   var parser = tapOut();
   var stream = duplexer(parser, output);
   var startTime = new Date().getTime();
 
-  output.push(&#x27;\n&#x27;);
+  output.push('\n');
 
-  parser.on(&#x27;test&#x27;, function (test) {
+  parser.on('test', function (test) {
 
-    output.push(&#x27;\n&#x27; + pad(format.underline(test.name)) + &#x27;\n\n&#x27;);
+    output.push('\n' + pad(format.underline(test.name)) + '\n\n');
   });
 
   // Passing assertions
-  parser.on(&#x27;pass&#x27;, function (assertion) {
+  parser.on('pass', function (assertion) {
 
     var glyph = format.green(symbols.tick);
     var name = format.dim(assertion.name);
 
-    output.push(pad(&#x27;  &#x27; + glyph + &#x27; &#x27; + name + &#x27;\n&#x27;));
+    output.push(pad('  ' + glyph + ' ' + name + '\n'));
   });
 
   // Failing assertions
-  parser.on(&#x27;fail&#x27;, function (assertion) {
+  parser.on('fail', function (assertion) {
 
     var glyph = symbols.cross;
-    var title =  glyph + &#x27; &#x27; + assertion.name;
+    var title =  glyph + ' ' + assertion.name;
     var raw = format.cyan(prettifyRawError(assertion.error.raw));
     var divider = _.fill(
       new Array((title).length + 1),
-      &#x27;-&#x27;
-    ).join(&#x27;&#x27;);
+      '-'
+    ).join('');
 
-    output.push(&#x27;\n&#x27; + pad(&#x27;  &#x27; + format.red(title) + &#x27;\n&#x27;));
-    output.push(pad(&#x27;  &#x27; + format.red(divider) + &#x27;\n&#x27;));
+    output.push('\n' + pad('  ' + format.red(title) + '\n'));
+    output.push(pad('  ' + format.red(divider) + '\n'));
     output.push(raw);
 
     stream.failed = true;
   });
 
-  parser.on(&#x27;comment&#x27;, function (comment) {
+  parser.on('comment', function (comment) {
 
-    output.push(pad(&#x27;  &#x27; + format.yellow(comment.raw)) + &#x27;\n&#x27;);
+    output.push(pad('  ' + format.yellow(comment.raw)) + '\n');
   });
 
   // All done
-  parser.on(&#x27;output&#x27;, function (results) {
+  parser.on('output', function (results) {
 
-    output.push(&#x27;\n\n&#x27;);
+    output.push('\n\n');
 
     // Most likely a failure upstream
-    if (results.plans.length &#x3c; 1) {
+    if (results.plans.length &lt; 1) {
       process.exit(1);
     }
 
-    if (results.fail.length &#x3e; 0) {
+    if (results.fail.length &gt; 0) {
       output.push(formatErrors(results));
-      output.push(&#x27;\n&#x27;);
+      output.push('\n');
     }
 
     output.push(formatTotals(results));
-    output.push(&#x27;\n\n\n&#x27;);
+    output.push('\n\n\n');
 
     // Exit if no tests run. This is a result of 1 of 2 things:
     //  1. No tests were written
@@ -165,19 +158,19 @@
 
   function prettifyRawError (rawError) {
 
-    return rawError.split(&#x27;\n&#x27;).map(function (line) {
+    return rawError.split('\n').map(function (line) {
 
       return pad(line);
-    }).join(&#x27;\n&#x27;) + &#x27;\n\n&#x27;;
+    }).join('\n') + '\n\n';
   }
 
   function formatErrors (results) {
 
     var failCount = results.fail.length;
-    var past = (failCount === 1) ? &#x27;was&#x27; : &#x27;were&#x27;;
-    var plural = (failCount === 1) ? &#x27;failure&#x27; : &#x27;failures&#x27;;
+    var past = (failCount === 1) ? 'was' : 'were';
+    var plural = (failCount === 1) ? 'failure' : 'failures';
 
-    var out = &#x27;\n&#x27; + pad(format.red.bold(&#x27;Failed Tests:&#x27;) + &#x27; There &#x27; + past + &#x27; &#x27; + format.red.bold(failCount) + &#x27; &#x27; + plural + &#x27;\n&#x27;);
+    var out = '\n' + pad(format.red.bold('Failed Tests:') + ' There ' + past + ' ' + format.red.bold(failCount) + ' ' + plural + '\n');
     out += formatFailedAssertions(results);
 
     return out;
@@ -186,20 +179,20 @@
   function formatTotals (results) {
 
     if (results.tests.length === 0) {
-      return pad(format.red(symbols.cross + &#x27; No tests found&#x27;));
+      return pad(format.red(symbols.cross + ' No tests found'));
     }
 
     return _.filter([
-      pad(&#x27;total:     &#x27; + results.asserts.length),
-      pad(format.green(&#x27;passing:   &#x27; + results.pass.length)),
-      results.fail.length &#x3e; 0 ? pad(format.red(&#x27;failing:   &#x27; + results.fail.length)) : undefined,
-      pad(&#x27;duration:  &#x27; + prettyMs(new Date().getTime() - startTime))
-    ], _.identity).join(&#x27;\n&#x27;);
+      pad('total:     ' + results.asserts.length),
+      pad(format.green('passing:   ' + results.pass.length)),
+      results.fail.length &gt; 0 ? pad(format.red('failing:   ' + results.fail.length)) : undefined,
+      pad('duration:  ' + prettyMs(new Date().getTime() - startTime))
+    ], _.identity).join('\n');
   }
 
   function formatFailedAssertions (results) {
 
-    var out = &#x27;&#x27;;
+    var out = '';
 
     var groupedAssertions = _.groupBy(results.fail, function (assertion) {
       return assertion.test;
@@ -207,17 +200,17 @@
 
     _.each(groupedAssertions, function (assertions, testNumber) {
 
-      // Wrie failed assertion&#x27;s test name
+      // Wrie failed assertion's test name
       var test = _.find(results.tests, {number: parseInt(testNumber)});
-      out += &#x27;\n&#x27; + pad(&#x27;  &#x27; + test.name + &#x27;\n\n&#x27;);
+      out += '\n' + pad('  ' + test.name + '\n\n');
 
       // Write failed assertion
       _.each(assertions, function (assertion) {
 
-        out += pad(&#x27;    &#x27; + format.red(symbols.cross) + &#x27; &#x27; + format.red(assertion.name)) + &#x27;\n&#x27;;
+        out += pad('    ' + format.red(symbols.cross) + ' ' + format.red(assertion.name)) + '\n';
       });
 
-      out += &#x27;\n&#x27;;
+      out += '\n';
     });
 
     return out;
@@ -242,3 +235,4 @@
     ]
 </div>
 </div>
+</body></html>
